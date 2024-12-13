@@ -20,13 +20,16 @@
 
 .movie-poster {
   width: 100%;
-  height: auto;
-  border-bottom: 2px solid #e50914; /* Línea roja estilo Netflix */
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  background-color: #1c1c1c;
 }
 
 .movie-info {
   padding: 10px;
   text-align: center;
+  color: white;
 }
 
 .movie-info h4 {
@@ -39,4 +42,17 @@
 .movie-info p {
   color: #999;
   font-size: 0.9rem;
+}
+.movie-synopsis {
+  font-size: 0.9rem;
+  color: #cccccc;
+  margin-top: 5px;
+  max-height: 4.5em;
+  overflow: hidden;
+  line-height: 1.5em;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
 }

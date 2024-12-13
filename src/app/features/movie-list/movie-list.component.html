@@ -13,6 +13,7 @@
     <div class="movie-info">
       <h4>{{ movie.title }}</h4>
       <p>{{ movie.release_date | date: 'yyyy' }}</p>
+      <p class="movie-synopsis">{{ movie.overview || 'No synopsis available.' }}</p>
     </div>
   </div>
 </div>
