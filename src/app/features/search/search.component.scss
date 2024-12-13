@@ -1,92 +1,48 @@
+.search-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #fff;
+}
 
-  .search-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-  }
+.search-bar {
+  position: sticky;
+  top: 0;
+  background-color: #141414; /* Fondo oscuro estilo Netflix */
+  z-index: 10;
+  padding: 20px 0;
+  text-align: center;
+  border-bottom: 1px solid #e50914;
+}
 
-  .search-bar {
-    margin-bottom: 20px;
-  }
+.search-bar h2 {
+  color: #e50914;
+  margin-bottom: 10px;
+}
 
-  .search-input {
-    padding: 10px;
-    width: 60%;
-    font-size: 1rem;
-    margin-right: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
+.search-input {
+  width: 60%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
 
-  .search-btn {
-    padding: 10px;
-    font-size: 1rem;
-    cursor: pointer;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-  }
+.search-btn {
+  margin-left: 10px;
+  padding: 10px 15px;
+  background-color: #e50914;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
 
-  .error-message {
-    color: red;
-    font-size: 1rem;
-    margin-bottom: 20px;
-  }
+.search-btn:hover {
+  background-color: #f40612;
+}
 
-  .movie-results {
-    margin-top: 20px;
-  }
-
-  .movie-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
-    justify-items: center;
-  }
-
-  .movie-card {
-    width: 100%;
-    max-width: 200px;
-    cursor: pointer;
-    text-align: center;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-  }
-
-  .movie-card:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
-
-  .movie-poster {
-    width: 100%;
-    height: auto;
-    border-bottom: 2px solid #ccc;
-  }
-
-  .movie-info {
-    padding: 10px;
-  }
-
-  .movie-info h4 {
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-
-  .movie-info p {
-    color: #555;
-  }
-
-  @media (max-width: 768px) {
-    .search-input {
-      width: 80%;
-    }
-
-    .search-btn {
-      width: 100%;
-      margin-top: 10px;
-    }
-  }
+.results-container {
+  margin-top: 20px;
+}

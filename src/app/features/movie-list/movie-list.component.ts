@@ -2,18 +2,19 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from '../../core/movie.service';
+import { PaginationComponent } from '../pagination/pagination.component';
 
 @Component({
   selector: 'app-movie-list',
   standalone: true,
-  imports: [CommonModule], // Asegúrate de incluir CommonModule aquí
+  imports: [CommonModule, PaginationComponent],
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent implements OnInit {
   @Input() movies: any[] = [];
-  currentPage: number = 1;
-  totalPages: number = 1;
+  @Input() currentPage: number = 1;
+  @Input() totalPages: number = 1;
 
   constructor(
     private movieService: MovieService,
@@ -33,7 +34,6 @@ export class MovieListComponent implements OnInit {
       this.movies = response.results;
       this.totalPages = response.total_pages;
       this.currentPage = page;
-      this.movieService.updatePagination(this.currentPage, this.totalPages);
     });
   }
 

@@ -20,20 +20,28 @@ import { MovieListComponent } from '../movie-list/movie-list.component';
 export class SearchComponent {
   query: string = '';
   movies: any[] = [];
+  currentPage: number = 1;
+  totalPages: number = 1;
   errorMessage: string = '';
 
   constructor(private movieService: MovieService) {}
 
   searchMovies() {
     if (this.query.trim()) {
-      this.movieService.searchMovies(this.query).subscribe(
+      this.movieService.searchMovies(this.query, this.currentPage).subscribe(
         (response) => {
           this.movies = response.results;
+          this.totalPages = response.total_pages;
         },
         (error) => {
           this.errorMessage = 'Error al buscar películas.';
         }
       );
     }
+  }
+
+  onPageChange(newPage: number) {
+    this.currentPage = newPage;
+    this.searchMovies();
   }
 }

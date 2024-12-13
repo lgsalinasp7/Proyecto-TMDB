@@ -1,4 +1,5 @@
 <div class="movie-list">
+  <!-- Tarjetas de películas -->
   <div
     *ngFor="let movie of movies"
     class="movie-card"
@@ -14,4 +15,13 @@
       <p>{{ movie.release_date | date: 'yyyy' }}</p>
     </div>
   </div>
+</div>
+
+<!-- Paginador -->
+<div class="pagination-container">
+  <app-pagination
+    [currentPage]="currentPage"
+    [totalPages]="totalPages"
+    (pageChange)="onPageChange($event)"
+  ></app-pagination>
 </div>

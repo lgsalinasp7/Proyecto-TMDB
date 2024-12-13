@@ -1,8 +1,9 @@
 import { Routes } from '@angular/router';
 import { SearchComponent } from './features/search/search.component';
-import { MovieListComponent } from './features/movie-list/movie-list.component';
+import { MovieDetailsComponent } from './features/movie-details/movie-details.component';
 
 export const appRoutes: Routes = [
   { path: '', component: SearchComponent },
-{ path: 'movies/page/:page', component: MovieListComponent },
+  { path: 'movie/:id', component: MovieDetailsComponent },
+  { path: 'movies/page/:page', component: SearchComponent }
 ];

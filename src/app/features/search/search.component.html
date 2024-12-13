@@ -1,6 +1,7 @@
-<div class="search-container">
-  <h2>Buscar Películas</h2>
+<div class="search-page">
+  <!-- Buscador -->
   <div class="search-bar">
+    <h2>BUSCAR PELÍCULAS</h2>
     <input
       type="text"
       [(ngModel)]="query"
@@ -11,10 +12,8 @@
     <button (click)="searchMovies()" class="search-btn">Buscar</button>
   </div>
 
-  <div *ngIf="errorMessage" class="error-message">
-    {{ errorMessage }}
+  <!-- Resultados de películas -->
+  <div class="results-container">
+    <app-movie-list *ngIf="movies.length > 0" [movies]="movies"></app-movie-list>
   </div>
-
-  <!-- Renderizar el componente MovieList -->
-  <app-movie-list *ngIf="movies.length > 0" [movies]="movies"></app-movie-list>
 </div>
