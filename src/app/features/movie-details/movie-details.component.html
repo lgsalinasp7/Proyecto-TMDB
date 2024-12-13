@@ -10,8 +10,20 @@
       <p><strong>Duration:</strong> {{ movie.runtime || 'N/A' }} minutes</p>
       <p><strong>Genres:</strong> {{ genres }}</p>
       <p><strong>Overview:</strong> {{ movie.overview || 'No overview available.' }}</p>
-      <p><strong>IMDb Rating:</strong> {{ movie.vote_average || 'N/A' }}</p>
-      <p><strong>Cast:</strong> {{ cast }}</p>
+      <p><strong>IMDb Rating:</strong> {{ movie.vote_average }} / 10 ({{ movie.vote_count }} votes)</p>
+
+      <!-- Elenco -->
+      <div class="movie-cast">
+        <p><strong>Elenco:</strong></p>
+        <ul *ngIf="movieCast.length > 0; else noCast">
+          <li *ngFor="let actor of movieCast">
+            {{ actor.name }} as {{ actor.character }}
+          </li>
+        </ul>
+        <ng-template #noCast>
+          <p>No tiene elenco.</p>
+        </ng-template>
+      </div>
     </div>
   </div>
 </div>

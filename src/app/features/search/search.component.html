@@ -1,5 +1,5 @@
 <div class="search-page">
-  <!-- Buscador -->
+
   <div class="search-bar">
     <h2>BUSCAR PELÍCULAS</h2>
     <input
@@ -12,7 +12,7 @@
     <button (click)="searchMovies()" class="search-btn">Buscar</button>
   </div>
 
-  <!-- Resultados de películas -->
+
   <div class="results-container">
     <app-movie-list *ngIf="movies.length > 0" [movies]="movies"></app-movie-list>
   </div>

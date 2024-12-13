@@ -17,28 +17,43 @@ import { MovieService } from '../../core/movie.service';
 export class MovieDetailsComponent implements OnInit {
 
   movie: any = null;
+  movieCast: any[] = [];
 
   constructor(private movieService: MovieService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     const movieId = this.route.snapshot.paramMap.get('id');
     if (movieId) {
-      this.movieService.getMovieDetails(movieId).subscribe(
-        (data) => {
-          this.movie = data;
-        },
-        (error) => {
-          console.error('Error fetching movie details:', error);
-        }
-      );
+      this.loadMovieDetails(movieId);
+      this.loadMovieCredits(movieId);
     }
+  }
+
+
+  private loadMovieDetails(movieId: string): void {
+    this.movieService.getMovieDetails(movieId).subscribe(
+      (data) => {
+        this.movie = data;
+      },
+      (error) => {
+        console.error('Error fetching movie details:', error);
+      }
+    );
+  }
+
+
+  private loadMovieCredits(movieId: string): void {
+    this.movieService.getMovieCredits(movieId).subscribe(
+      (data) => {
+        this.movieCast = data.cast.slice(0, 5);
+      },
+      (error) => {
+        console.error('Error fetching movie credits:', error);
+      }
+    );
   }
 
   get genres(): string {
     return this.movie?.genres?.map((genre: any) => genre.name).join(', ') || 'N/A';
-  }
-
-  get cast(): string {
-    return this.movie?.cast?.slice(0, 5).map((actor: any) => actor.name).join(', ') || 'N/A';
   }
 }

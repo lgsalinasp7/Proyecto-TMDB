@@ -12,7 +12,7 @@ import { MovieListComponent } from '../movie-list/movie-list.component';
     CommonModule,
     FormsModule,
     HttpClientModule,
-    MovieListComponent // Importa el componente aquí
+    MovieListComponent
   ],
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']

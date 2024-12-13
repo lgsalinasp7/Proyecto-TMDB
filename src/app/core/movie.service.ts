@@ -22,26 +22,24 @@ export class MovieService {
   searchMovies(query: string, page: number = 1): Observable<any> {
     const url = `${this.apiUrl}/search/movie?api_key=${this.apiKey}&query=${encodeURIComponent(query)}&language=en-US&page=${page}`;
 
-    // No es necesario incluir Authorization si el API key ya está en la URL
+
     const headers = new HttpHeaders({
-      'accept': 'application/json',  // Solo especificamos que esperamos JSON
+      'accept': 'application/json',
     });
 
     return this.http.get<any>(url, { headers });
   }
 
-  // Obtener detalles de una película
   getMovieDetails(id: string): Observable<any> {
     const url = `${this.apiUrl}/movie/${id}?api_key=${this.apiKey}&language=en-US`;
 
     const headers = new HttpHeaders({
-      'accept': 'application/json',  // Cabeceras estándar
+      'accept': 'application/json',
     });
 
     return this.http.get<any>(url, { headers });
   }
 
-  // Obtener créditos de una película
   getMovieCredits(id: string): Observable<any> {
     const url = `${this.apiUrl}/movie/${id}/credits?api_key=${this.apiKey}`;
 
@@ -56,4 +54,6 @@ export class MovieService {
     this.currentPageSource.next(currentPage);
     this.totalPagesSource.next(totalPages);
   }
+
+
 }
