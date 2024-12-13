@@ -1,0 +1,42 @@
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.movie-card {
+  background-color: #1c1c1c; /* Fondo oscuro para resaltar */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: scale(1.05); /* Efecto de zoom */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.movie-poster {
+  width: 100%;
+  height: auto;
+  border-bottom: 2px solid #e50914; /* Línea roja estilo Netflix */
+}
+
+.movie-info {
+  padding: 10px;
+  text-align: center;
+}
+
+.movie-info h4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 5px;
+}
+
+.movie-info p {
+  color: #999;
+  font-size: 0.9rem;
+}

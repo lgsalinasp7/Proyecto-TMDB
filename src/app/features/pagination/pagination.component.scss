@@ -1,0 +1,33 @@
+/* Paginador minimalista */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.pagination button {
+  padding: 10px 15px;
+  font-size: 1rem;
+  background-color: #e50914; /* Rojo estilo Netflix */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #f40612; /* Rojo más claro al pasar el mouse */
+}
+
+.pagination span {
+  font-size: 1.1rem;
+  color: white;
+}

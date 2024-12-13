@@ -1,0 +1,50 @@
+/* src/app/features/movie-details/movie-details.component.css */
+
+.movie-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.movie-poster {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.movie-info {
+  max-width: 600px;
+  text-align: left;
+}
+
+.movie-info p {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.movie-info strong {
+  font-weight: bold;
+}
+
+.movie-details h2 {
+  font-size: 2rem;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
