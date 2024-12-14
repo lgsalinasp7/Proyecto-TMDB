@@ -1,4 +1,4 @@
-<div class="movie-details" *ngIf="movie">
+<div class="movie-details" *ngIf="movie; else loading">
   <h2>{{ movie.title }} ({{ movie.release_date | date: 'yyyy' }})</h2>
   <div class="details-container">
     <div class="image-container">
@@ -30,3 +30,9 @@
     </div>
   </div>
 </div>
+
+<ng-template #loading>
+  <div class="loading-container">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

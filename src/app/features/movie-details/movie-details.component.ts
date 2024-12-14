@@ -3,13 +3,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from '../../core/movie.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-movie-details',
   standalone: true,
   imports: [
     CommonModule,
-    HttpClientModule
+
+    MatProgressSpinnerModule
   ],
   templateUrl: './movie-details.component.html',
   styleUrls: ['./movie-details.component.scss']
