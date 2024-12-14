@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from '../../core/movie.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class MovieDetailsComponent implements OnInit {
   movie: any = null;
   movieCast: any[] = [];
 
-  constructor(private movieService: MovieService, private route: ActivatedRoute) {}
+  constructor(private movieService: MovieService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     const movieId = this.route.snapshot.paramMap.get('id');
@@ -28,7 +28,6 @@ export class MovieDetailsComponent implements OnInit {
       this.loadMovieCredits(movieId);
     }
   }
-
 
   private loadMovieDetails(movieId: string): void {
     this.movieService.getMovieDetails(movieId).subscribe(
@@ -40,7 +39,6 @@ export class MovieDetailsComponent implements OnInit {
       }
     );
   }
-
 
   private loadMovieCredits(movieId: string): void {
     this.movieService.getMovieCredits(movieId).subscribe(
@@ -55,5 +53,9 @@ export class MovieDetailsComponent implements OnInit {
 
   get genres(): string {
     return this.movie?.genres?.map((genre: any) => genre.name).join(', ') || 'N/A';
+  }
+
+  goBack(): void {
+    this.router.navigate(['/']);
   }
 }

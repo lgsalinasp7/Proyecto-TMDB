@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from '../../core/movie.service';
@@ -15,6 +15,7 @@ export class MovieListComponent implements OnInit {
   @Input() movies: any[] = [];
   @Input() currentPage: number = 1;
   @Input() totalPages: number = 1;
+  @Output() pageChange: EventEmitter<number> = new EventEmitter<number>();
 
   constructor(
     private movieService: MovieService,
@@ -38,7 +39,7 @@ export class MovieListComponent implements OnInit {
   }
 
   onPageChange(newPage: number) {
-    this.router.navigate(['/movies/page', newPage]);
+    this.pageChange.emit(newPage);
   }
 
   goToDetails(id: string) {

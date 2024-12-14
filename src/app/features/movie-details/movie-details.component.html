@@ -1,11 +1,14 @@
 <div class="movie-details" *ngIf="movie">
   <h2>{{ movie.title }} ({{ movie.release_date | date: 'yyyy' }})</h2>
   <div class="details-container">
-    <img
-      [src]="movie.poster_path ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path : 'https://via.placeholder.com/500x750?text=No+Image'"
-      alt="{{ movie.title }}"
-      class="movie-poster"
-    />
+    <div class="image-container">
+      <img
+        [src]="movie.poster_path ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path : 'https://via.placeholder.com/500x750?text=No+Image'"
+        alt="{{ movie.title }}"
+        class="movie-poster"
+      />
+      <button (click)="goBack()" class="back-btn">Regresar a la lista</button>
+    </div>
     <div class="movie-info">
       <p><strong>Duration:</strong> {{ movie.runtime || 'N/A' }} minutes</p>
       <p><strong>Genres:</strong> {{ genres }}</p>
@@ -17,7 +20,7 @@
         <p><strong>Elenco:</strong></p>
         <ul *ngIf="movieCast.length > 0; else noCast">
           <li *ngFor="let actor of movieCast">
-            {{ actor.name }} as {{ actor.character }}
+            {{ actor.name }}
           </li>
         </ul>
         <ng-template #noCast>
