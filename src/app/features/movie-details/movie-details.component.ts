@@ -4,13 +4,15 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from '../../core/movie.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ErrorHandlerService } from '../../core/error-handler.service';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-movie-details',
   standalone: true,
   imports: [
     CommonModule,
-
+    MatDialogModule,
     MatProgressSpinnerModule
   ],
   templateUrl: './movie-details.component.html',
@@ -20,8 +22,9 @@ export class MovieDetailsComponent implements OnInit {
 
   movie: any = null;
   movieCast: any[] = [];
+  isLoading = true;
 
-  constructor(private movieService: MovieService, private route: ActivatedRoute, private router: Router) {}
+  constructor(private movieService: MovieService,private errorHandler: ErrorHandlerService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     const movieId = this.route.snapshot.paramMap.get('id');
@@ -35,9 +38,11 @@ export class MovieDetailsComponent implements OnInit {
     this.movieService.getMovieDetails(movieId).subscribe(
       (data) => {
         this.movie = data;
+        this.isLoading = false;
       },
       (error) => {
-        console.error('Error fetching movie details:', error);
+        this.isLoading = false;
+        this.errorHandler.showError('Error al obtener detalles de la película.');
       }
     );
   }
@@ -48,7 +53,8 @@ export class MovieDetailsComponent implements OnInit {
         this.movieCast = data.cast.slice(0, 5);
       },
       (error) => {
-        console.error('Error fetching movie credits:', error);
+        this.isLoading = false;
+        this.errorHandler.showError('Error al obtener detalles de la película.');
       }
     );
   }

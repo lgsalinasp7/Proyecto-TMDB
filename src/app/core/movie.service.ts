@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { apiConfig } from '../api.config';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, catchError, Observable } from 'rxjs';
+import { ErrorHandlerService } from './error-handler.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class MovieService {
   currentPage$ = this.currentPageSource.asObservable();
   totalPages$ = this.totalPagesSource.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private errorHandler: ErrorHandlerService) { }
 
   // Buscar películas por título
   searchMovies(query: string, page: number = 1): Observable<any> {
@@ -27,7 +28,12 @@ export class MovieService {
       'accept': 'application/json',
     });
 
-    return this.http.get<any>(url, { headers });
+    return this.http.get<any>(url, { headers }).pipe(
+      catchError((error) => {
+        this.errorHandler.showError('Error al buscar películas.');
+        throw error;
+      })
+    );
   }
 
   getMovieDetails(id: string): Observable<any> {
@@ -37,7 +43,12 @@ export class MovieService {
       'accept': 'application/json',
     });
 
-    return this.http.get<any>(url, { headers });
+    return this.http.get<any>(url, { headers }).pipe(
+      catchError((error) => {
+        this.errorHandler.showError('Error al obtener detalles de la película.');
+        throw error;
+      })
+    );
   }
 
   getMovieCredits(id: string): Observable<any> {
@@ -47,7 +58,12 @@ export class MovieService {
       'accept': 'application/json',
     });
 
-    return this.http.get<any>(url, { headers });
+    return this.http.get<any>(url, { headers }).pipe(
+      catchError((error) => {
+        this.errorHandler.showError('Error al obtener los créditos de la película.');
+        throw error;
+      })
+    );
   }
 
   updatePagination(currentPage: number, totalPages: number): void {

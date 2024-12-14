@@ -1,4 +1,4 @@
-<div class="movie-details" *ngIf="movie; else loading">
+<div class="movie-details" *ngIf="!isLoading; else loading">
   <h2>{{ movie.title }} ({{ movie.release_date | date: 'yyyy' }})</h2>
   <div class="details-container">
     <div class="image-container">
